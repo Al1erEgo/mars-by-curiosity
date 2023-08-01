@@ -14,7 +14,8 @@
     "expo-splash-screen": "^0.20.5",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
-    "react-native": "0.72.3"
+    "react-native": "0.72.3",
+    "swr": "^2.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
