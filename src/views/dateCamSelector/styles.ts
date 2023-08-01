@@ -47,5 +47,14 @@ export const dateCamSelectorStyles = StyleSheet.create({
     selectItem: {
         backgroundColor: '#eee7df',
         borderWidth: 0,
+    },
+    datePickerButton: {
+        borderWidth:1,
+        borderRadius:10,
+        borderColor:'gray',
+        paddingHorizontal:20,
+        paddingVertical:12,
+        flexDirection:'row',
+        justifyContent:'space-between'
     }
 });
