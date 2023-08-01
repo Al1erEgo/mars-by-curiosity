@@ -5,9 +5,11 @@ import {SelectList} from "react-native-dropdown-select-list/index";
 import {CAMS_NAMES2} from "../../constants/camsNames";
 import {ArrowIcon} from "../../components/arrowIcon";
 import DateTimePickerModal from "react-native-modal-datetime-picker"
+import moment from 'moment';
 
 export const DateCamSelector = () => {
     const [selectedCamera, setSelectedCamera] = useState<string>(CAMS_NAMES2[0].key)
+    const [date, setDate] = useState<Date | undefined>()
     const [isDatePickerVisible, setDatePickerVisibility] = useState<boolean>(false);
 
     const showDatePicker = () => {
@@ -20,6 +22,7 @@ export const DateCamSelector = () => {
 
     const handleConfirm = (date) => {
         console.warn("A date has been picked: ", date);
+        setDate(date)
         hideDatePicker();
     };
 
@@ -44,6 +47,9 @@ export const DateCamSelector = () => {
                 </View>
                 <View style={[dateCamSelectorStyles.inputGroup]}>
                     <Text style={[dateCamSelectorStyles.text]}>Date</Text>
+                    <View style={[dateCamSelectorStyles.datePickerButton, dateCamSelectorStyles.select]}>
+                        <Text>{moment(date).format('D MMM, YYYY')}</Text>
+                    </View>
                     <Button title="Show Date Picker" onPress={showDatePicker} />
                     <DateTimePickerModal
                         isVisible={isDatePickerVisible}
