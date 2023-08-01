@@ -55,7 +55,6 @@ export const DateCamSelector = () => {
                             style={{width:24,height:24}}
                         />
                     </TouchableOpacity>
-                    {/*<Button title="Show Date Picker" onPress={showDatePicker} />*/}
                     <DateTimePickerModal
                         isVisible={isDatePickerVisible}
                         mode="date"
