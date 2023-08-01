@@ -1,13 +1,27 @@
 import React, {useState} from 'react';
-import {View, Text, ImageBackground} from "react-native";
+import {View, Text, ImageBackground, Button} from "react-native";
 import {dateCamSelectorStyles} from './styles'
 import {SelectList} from "react-native-dropdown-select-list/index";
-import {CAMS_NAMES, CAMS_NAMES2} from "../../constants/camsNames";
-
-const dropdownSvg = require('../../assets/dropdown.svg')
+import {CAMS_NAMES2} from "../../constants/camsNames";
+import {ArrowIcon} from "../../components/arrowIcon";
+import DateTimePickerModal from "react-native-modal-datetime-picker"
 
 export const DateCamSelector = () => {
-    const [selectedCamera, setSelectedCamera] = useState<string>()
+    const [selectedCamera, setSelectedCamera] = useState<string>(CAMS_NAMES2[0].key)
+    const [isDatePickerVisible, setDatePickerVisibility] = useState<boolean>(false);
+
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
+
+    const handleConfirm = (date) => {
+        console.warn("A date has been picked: ", date);
+        hideDatePicker();
+    };
 
     return (
         <View style={[dateCamSelectorStyles.container]}>
@@ -18,7 +32,7 @@ export const DateCamSelector = () => {
                 <View style={[dateCamSelectorStyles.inputGroup]}>
                     <Text style={[dateCamSelectorStyles.text]}>Rover Camera</Text>
                     <SelectList
-                        //arrowicon={require('../../assets/dropdown.svg')}
+                        arrowicon={<ArrowIcon/>}
                         fontFamily='terminal-dosis'
                         dropdownTextStyles={dateCamSelectorStyles.selectInput}
                         inputStyles={dateCamSelectorStyles.selectInput}
@@ -27,6 +41,16 @@ export const DateCamSelector = () => {
                         setSelected={(value: {key: string, value: string})=> setSelectedCamera(value.key)}
                         defaultOption={CAMS_NAMES2[0]}
                         data={CAMS_NAMES2} />
+                </View>
+                <View style={[dateCamSelectorStyles.inputGroup]}>
+                    <Text style={[dateCamSelectorStyles.text]}>Date</Text>
+                    <Button title="Show Date Picker" onPress={showDatePicker} />
+                    <DateTimePickerModal
+                        isVisible={isDatePickerVisible}
+                        mode="date"
+                        onConfirm={handleConfirm}
+                        onCancel={hideDatePicker}
+                    />
                 </View>
             </View>
             <View></View>
