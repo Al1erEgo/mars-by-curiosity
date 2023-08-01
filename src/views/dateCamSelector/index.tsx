@@ -1,11 +1,16 @@
 import React, {useState} from 'react';
-import {View, Text, ImageBackground, Button} from "react-native";
+import {View, Text, ImageBackground, Button, Image, TouchableOpacity} from "react-native";
 import {dateCamSelectorStyles} from './styles'
 import {SelectList} from "react-native-dropdown-select-list/index";
 import {CAMS_NAMES2} from "../../constants/camsNames";
-import {ArrowIcon} from "../../components/arrowIcon";
 import DateTimePickerModal from "react-native-modal-datetime-picker"
 import moment from 'moment';
+
+const arrowIcon = <Image
+    source={require('../../assets/dropdown.png')}
+    resizeMode='contain'
+    style={{width:10,height:5}}
+/>
 
 export const DateCamSelector = () => {
     const [selectedCamera, setSelectedCamera] = useState<string>(CAMS_NAMES2[0].key)
@@ -20,7 +25,7 @@ export const DateCamSelector = () => {
         setDatePickerVisibility(false);
     };
 
-    const handleConfirm = (date) => {
+    const handleConfirm = (date: Date) => {
         console.warn("A date has been picked: ", date);
         setDate(date)
         hideDatePicker();
@@ -35,7 +40,7 @@ export const DateCamSelector = () => {
                 <View style={[dateCamSelectorStyles.inputGroup]}>
                     <Text style={[dateCamSelectorStyles.text]}>Rover Camera</Text>
                     <SelectList
-                        arrowicon={<ArrowIcon/>}
+                        arrowicon={arrowIcon}
                         fontFamily='terminal-dosis'
                         dropdownTextStyles={dateCamSelectorStyles.selectInput}
                         inputStyles={dateCamSelectorStyles.selectInput}
@@ -47,10 +52,17 @@ export const DateCamSelector = () => {
                 </View>
                 <View style={[dateCamSelectorStyles.inputGroup]}>
                     <Text style={[dateCamSelectorStyles.text]}>Date</Text>
-                    <View style={[dateCamSelectorStyles.datePickerButton, dateCamSelectorStyles.select]}>
-                        <Text>{moment(date).format('D MMM, YYYY')}</Text>
-                    </View>
-                    <Button title="Show Date Picker" onPress={showDatePicker} />
+                    <TouchableOpacity onPress={showDatePicker} style={[dateCamSelectorStyles.datePickerButton, dateCamSelectorStyles.select]}>
+                        <Text style={[dateCamSelectorStyles.text, dateCamSelectorStyles.selectInput]}>
+                            {moment(date).format('D MMM, YYYY')}
+                        </Text>
+                        <Image
+                            source={require('../../assets/calendar.png')}
+                            resizeMode='contain'
+                            style={{width:24,height:24}}
+                        />
+                    </TouchableOpacity>
+                    {/*<Button title="Show Date Picker" onPress={showDatePicker} />*/}
                     <DateTimePickerModal
                         isVisible={isDatePickerVisible}
                         mode="date"

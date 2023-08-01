@@ -42,7 +42,7 @@ export const dateCamSelectorStyles = StyleSheet.create({
         alignItems: 'center',
     },
     selectInput: {
-        fontSize: 20
+        fontSize: 18
     },
     selectItem: {
         backgroundColor: '#eee7df',
