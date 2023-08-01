@@ -17,18 +17,10 @@ export const DateCamSelector = () => {
     const [date, setDate] = useState<Date | undefined>()
     const [isDatePickerVisible, setDatePickerVisibility] = useState<boolean>(false);
 
-    const showDatePicker = () => {
-        setDatePickerVisibility(true);
-    };
-
-    const hideDatePicker = () => {
-        setDatePickerVisibility(false);
-    };
-
-    const handleConfirm = (date: Date) => {
+    const handleDataPick = (date: Date) => {
         console.warn("A date has been picked: ", date);
         setDate(date)
-        hideDatePicker();
+        setDatePickerVisibility(false)
     };
 
     return (
@@ -52,7 +44,8 @@ export const DateCamSelector = () => {
                 </View>
                 <View style={[dateCamSelectorStyles.inputGroup]}>
                     <Text style={[dateCamSelectorStyles.text]}>Date</Text>
-                    <TouchableOpacity onPress={showDatePicker} style={[dateCamSelectorStyles.datePickerButton, dateCamSelectorStyles.select]}>
+                    <TouchableOpacity onPress={()=>setDatePickerVisibility(true)}
+                                      style={[dateCamSelectorStyles.datePickerButton, dateCamSelectorStyles.select]}>
                         <Text style={[dateCamSelectorStyles.text, dateCamSelectorStyles.selectInput]}>
                             {moment(date).format('D MMM, YYYY')}
                         </Text>
@@ -66,9 +59,17 @@ export const DateCamSelector = () => {
                     <DateTimePickerModal
                         isVisible={isDatePickerVisible}
                         mode="date"
-                        onConfirm={handleConfirm}
-                        onCancel={hideDatePicker}
+                        onConfirm={handleDataPick}
+                        onCancel={()=>setDatePickerVisibility(false)}
                     />
+                </View>
+                <View style={[dateCamSelectorStyles.inputGroup, {paddingTop: 20}]}>
+                    <TouchableOpacity onPress={()=>{}}
+                                      style={[dateCamSelectorStyles.datePickerButton, dateCamSelectorStyles.exploreButton]}>
+                        <Text style={[dateCamSelectorStyles.text, dateCamSelectorStyles.exploreButtonText]}>
+                            Explore
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </View>
             <View></View>

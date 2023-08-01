@@ -7,7 +7,8 @@ import {DateCamSelector} from "./src/views/dateCamSelector";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    'terminal-dosis': require('./src/assets/terminal-dosis.ttf')
+    'terminal-dosis': require('./src/assets/terminal-dosis.ttf'),
+    'terminal-dosis-medium': require('./src/assets/terminal-dosis-medium.ttf')
   })
 
   useEffect(()=>{
