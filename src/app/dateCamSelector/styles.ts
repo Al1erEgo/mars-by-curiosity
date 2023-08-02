@@ -14,7 +14,7 @@ export const dateCamSelectorStyles = StyleSheet.create({
         width: '100%'
     },
     title: {
-        flex: 1,
+        flex: 0.8,
         justifyContent: 'center',
         alignItems: 'center',
         borderStyle: 'solid',

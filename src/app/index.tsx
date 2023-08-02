@@ -1,9 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
 import {useFonts} from "expo-font";
 import {useEffect} from "react";
 import * as SplashScreen from 'expo-splash-screen'
-import DateCamSelector from "./dateCamSelector";
+import {router} from "expo-router";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -11,32 +9,20 @@ export default function App() {
     'terminal-dosis-medium': require('../assets/terminal-dosis-medium.ttf')
   })
 
-  useEffect(()=>{
+  useEffect(() => {
     async function prepare() {
       await SplashScreen.preventAutoHideAsync()
     }
+
     prepare()
   }, [])
 
   if (!fontsLoaded) {
     return undefined
   } else {
-    SplashScreen.hideAsync()
+    SplashScreen.hideAsync().then(() => router.replace('/dateCamSelector'))
   }
 
-  return (
-    <View style={styles.container}>
-      <DateCamSelector />
-      <StatusBar style="auto" />
-    </View>
-  );
+  return null
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
