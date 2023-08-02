@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, ImageBackground, Image, TouchableOpacity} from "react-native";
 import {dateCamSelectorStyles} from './styles'
 import {SelectList} from "react-native-dropdown-select-list/index";
-import {CAMS_NAMES2} from "../../constants/camsNames";
+import {CAMS_NAMES} from "../../constants/camsNames";
 import DateTimePickerModal from "react-native-modal-datetime-picker"
 import moment from 'moment';
 import {Link} from "expo-router";
@@ -40,8 +40,8 @@ const DateCamSelector = () => {
                         boxStyles={dateCamSelectorStyles.select}
                         dropdownStyles={dateCamSelectorStyles.selectItem}
                         setSelected={setSelectedCamera}
-                        defaultOption={CAMS_NAMES2[0]}
-                        data={CAMS_NAMES2}/>
+                        defaultOption={CAMS_NAMES[0]}
+                        data={CAMS_NAMES}/>
                 </View>
                 <View style={[dateCamSelectorStyles.inputGroup]}>
                     <Text style={[dateCamSelectorStyles.text]}>Date</Text>

@@ -6,6 +6,7 @@ import {router} from "expo-router";
 //TODO do smthng with styles in dateCamSelector
 //TODO made navHeader
 //TODO disable future dates in datePicker
+//TODO made calendar with disabled dates if no photos for this date? //hard
 
 export default function App() {
   const [fontsLoaded] = useFonts({
