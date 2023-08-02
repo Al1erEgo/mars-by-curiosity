@@ -3,12 +3,12 @@ import { StyleSheet, View } from 'react-native';
 import {useFonts} from "expo-font";
 import {useEffect} from "react";
 import * as SplashScreen from 'expo-splash-screen'
-import {DateCamSelector} from "./src/views/dateCamSelector";
+import DateCamSelector from "./dateCamSelector";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    'terminal-dosis': require('./src/assets/terminal-dosis.ttf'),
-    'terminal-dosis-medium': require('./src/assets/terminal-dosis-medium.ttf')
+    'terminal-dosis': require('../assets/terminal-dosis.ttf'),
+    'terminal-dosis-medium': require('../assets/terminal-dosis-medium.ttf')
   })
 
   useEffect(()=>{

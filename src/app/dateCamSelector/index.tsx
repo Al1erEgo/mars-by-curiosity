@@ -12,7 +12,7 @@ const arrowIcon = <Image
     style={{width:10,height:5}}
 />
 
-export const DateCamSelector = () => {
+const DateCamSelector = () => {
     const [selectedCamera, setSelectedCamera] = useState<string>(CAMS_NAMES2[0].key)
     const [date, setDate] = useState<Date | undefined>()
     const [isDatePickerVisible, setDatePickerVisibility] = useState<boolean>(false);
@@ -76,3 +76,5 @@ export const DateCamSelector = () => {
         </View>
     );
 };
+
+export default DateCamSelector
