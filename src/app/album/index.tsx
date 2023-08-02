@@ -1,20 +1,23 @@
 import React from 'react';
-import {View, Text} from "react-native";
+import {View, Text, Image} from "react-native";
 import {useLocalSearchParams} from "expo-router";
 import useSWR from "swr";
 import {fetcher} from "../../utils/fetcher";
 import moment from 'moment';
+import {globalStyles} from "../../styles/globalStyles";
 
 //TODO loader while data fetching
 
 const Album = () => {
     const { selectedCamera, date }  = useLocalSearchParams()
 
-    //const { data, error, isLoading } = useSWR(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${moment(date).format('YYYY-MM-DD')}&api_key=DEMO_KEY&camera=${(selectedCamera as string).toLowerCase()}`, fetcher)
+    const { data, error, isLoading } = useSWR(`${process.env.EXPO_PUBLIC_API_URL}photos?earth_date=${moment(date).format('YYYY-MM-DD')}&api_key=${process.env.EXPO_PUBLIC_API_KEY}&camera=${(selectedCamera as string).toLowerCase()}`, fetcher)
 
     return (
-        <View>
-            <Text>Album page</Text>
+        <View style={[globalStyles.container]}>
+            {data?.photos && data.photos.map( photo => (
+                <Image key={photo.id} source={photo.img_src} resizeMode='contain' style={{width: '20%', height: '20%'}}/>
+            ))}
         </View>
     );
 };

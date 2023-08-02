@@ -5,7 +5,8 @@ import {SelectList} from "react-native-dropdown-select-list/index";
 import {CAMS_NAMES} from "../../constants/camsNames";
 import DateTimePickerModal from "react-native-modal-datetime-picker"
 import moment from 'moment';
-import {Link} from "expo-router";
+import {Link, router} from "expo-router";
+import {globalStyles} from "../../styles/globalStyles";
 
 const arrowIcon = <Image
     source={require('../../assets/dropdown.png')}
@@ -25,7 +26,7 @@ const DateCamSelector = () => {
 
 
     return (
-        <View style={[dateCamSelectorStyles.container]}>
+        <View style={[globalStyles.container]}>
             <View style={[dateCamSelectorStyles.title]}>
                 <Text>Select Camera and Date</Text>
             </View>
@@ -64,15 +65,12 @@ const DateCamSelector = () => {
                     />
                 </View>
                 <View style={[dateCamSelectorStyles.inputGroup, {paddingTop: 20}]}>
-                    <TouchableOpacity onPress={() => {}}
-                                      style={[dateCamSelectorStyles.datePickerButton, dateCamSelectorStyles.exploreButton]}>
-                        <Link href={{pathname: '/album', params: {selectedCamera, date}}}>
+                        <TouchableOpacity onPress={() => router.push({pathname: '/album', params: {selectedCamera, date}})}
+                                          style={[dateCamSelectorStyles.datePickerButton, dateCamSelectorStyles.exploreButton]}>
                             <Text style={[dateCamSelectorStyles.text, dateCamSelectorStyles.exploreButtonText]}>
                                 Explore
                             </Text>
-                        </Link>
-                    </TouchableOpacity>
-
+                        </TouchableOpacity>
                 </View>
             </View>
             <View></View>
