@@ -1,4 +1,5 @@
 export const CAMS_NAMES = [
+    {key: '', value: 'All cameras'},
     {key: 'FHAZ', value: 'Front Hazard Avoidance Camera'},
     {key: 'RHAZ', value: 'Rear Hazard Avoidance Camera'},
     {key: 'MAST', value: 'Mast Camera'},

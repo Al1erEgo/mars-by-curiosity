@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {View, Text, ImageBackground, Image, TouchableOpacity} from "react-native";
-import {dateCamSelectorStyles} from './styles'
+import {dateCamSelectorStyles as styles} from './styles'
 import {SelectList} from "react-native-dropdown-select-list/index";
 import {CAMS_NAMES} from "../../constants/camsNames";
 import DateTimePickerModal from "react-native-modal-datetime-picker"
 import moment from 'moment';
-import {Link, router} from "expo-router";
+import {router} from "expo-router";
 import {globalStyles} from "../../styles/globalStyles";
 
 const arrowIcon = <Image
@@ -27,28 +27,28 @@ const DateCamSelector = () => {
 
     return (
         <View style={[globalStyles.container]}>
-            <View style={[dateCamSelectorStyles.title]}>
+            <View style={[styles.title]}>
                 <Text>Select Camera and Date</Text>
             </View>
-            <View style={[dateCamSelectorStyles.inputsBlock]}>
-                <View style={[dateCamSelectorStyles.inputGroup]}>
-                    <Text style={[dateCamSelectorStyles.text]}>Rover Camera</Text>
+            <View style={[styles.inputsBlock]}>
+                <View style={[styles.inputGroup]}>
+                    <Text style={[styles.text]}>Rover Camera</Text>
                     <SelectList
                         arrowicon={arrowIcon}
                         fontFamily='terminal-dosis'
-                        dropdownTextStyles={dateCamSelectorStyles.selectInput}
-                        inputStyles={dateCamSelectorStyles.selectInput}
-                        boxStyles={dateCamSelectorStyles.select}
-                        dropdownStyles={dateCamSelectorStyles.selectItem}
+                        dropdownTextStyles={styles.selectInput}
+                        inputStyles={styles.selectInput}
+                        boxStyles={styles.select}
+                        dropdownStyles={styles.selectItem}
                         setSelected={setSelectedCamera}
                         defaultOption={CAMS_NAMES[0]}
                         data={CAMS_NAMES}/>
                 </View>
-                <View style={[dateCamSelectorStyles.inputGroup]}>
-                    <Text style={[dateCamSelectorStyles.text]}>Date</Text>
+                <View style={[styles.inputGroup]}>
+                    <Text style={[styles.text]}>Date</Text>
                     <TouchableOpacity onPress={() => setDatePickerVisibility(true)}
-                                      style={[dateCamSelectorStyles.datePickerButton, dateCamSelectorStyles.select]}>
-                        <Text style={[dateCamSelectorStyles.text, dateCamSelectorStyles.selectInput]}>
+                                      style={[styles.datePickerButton, styles.select]}>
+                        <Text style={[styles.text, styles.selectInput]}>
                             {moment(date).format('D MMM, YYYY')}
                         </Text>
                         <Image
@@ -64,17 +64,17 @@ const DateCamSelector = () => {
                         onCancel={() => setDatePickerVisibility(false)}
                     />
                 </View>
-                <View style={[dateCamSelectorStyles.inputGroup, {paddingTop: 20}]}>
+                <View style={[styles.inputGroup, {paddingTop: 20}]}>
                         <TouchableOpacity onPress={() => router.push({pathname: '/album', params: {selectedCamera, date}})}
-                                          style={[dateCamSelectorStyles.datePickerButton, dateCamSelectorStyles.exploreButton]}>
-                            <Text style={[dateCamSelectorStyles.text, dateCamSelectorStyles.exploreButtonText]}>
+                                          style={[styles.datePickerButton, styles.exploreButton]}>
+                            <Text style={[styles.text, styles.exploreButtonText]}>
                                 Explore
                             </Text>
                         </TouchableOpacity>
                 </View>
             </View>
             <View></View>
-            <ImageBackground source={require('../../assets/rover.png')} style={[dateCamSelectorStyles.bgImage]}/>
+            <ImageBackground source={require('../../assets/rover.png')} style={[styles.bgImage]}/>
         </View>
     );
 };
