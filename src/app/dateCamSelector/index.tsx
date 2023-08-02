@@ -5,24 +5,24 @@ import {SelectList} from "react-native-dropdown-select-list/index";
 import {CAMS_NAMES2} from "../../constants/camsNames";
 import DateTimePickerModal from "react-native-modal-datetime-picker"
 import moment from 'moment';
-import {router} from "expo-router";
+import {Link} from "expo-router";
 
 const arrowIcon = <Image
     source={require('../../assets/dropdown.png')}
     resizeMode='contain'
-    style={{width:10,height:5}}
+    style={{width: 10, height: 5}}
 />
 
 const DateCamSelector = () => {
-    const [selectedCamera, setSelectedCamera] = useState<string>(CAMS_NAMES2[0].key)
-    const [date, setDate] = useState<Date | undefined>()
+    const [selectedCamera, setSelectedCamera] = useState<string>('')
+    const [date, setDate] = useState<Date>(new Date)
     const [isDatePickerVisible, setDatePickerVisibility] = useState<boolean>(false);
 
     const handleDataPick = (date: Date) => {
-        console.warn("A date has been picked: ", date);
         setDate(date)
         setDatePickerVisibility(false)
     };
+
 
     return (
         <View style={[dateCamSelectorStyles.container]}>
@@ -39,13 +39,13 @@ const DateCamSelector = () => {
                         inputStyles={dateCamSelectorStyles.selectInput}
                         boxStyles={dateCamSelectorStyles.select}
                         dropdownStyles={dateCamSelectorStyles.selectItem}
-                        setSelected={(value: {key: string, value: string})=> setSelectedCamera(value.key)}
+                        setSelected={setSelectedCamera}
                         defaultOption={CAMS_NAMES2[0]}
-                        data={CAMS_NAMES2} />
+                        data={CAMS_NAMES2}/>
                 </View>
                 <View style={[dateCamSelectorStyles.inputGroup]}>
                     <Text style={[dateCamSelectorStyles.text]}>Date</Text>
-                    <TouchableOpacity onPress={()=>setDatePickerVisibility(true)}
+                    <TouchableOpacity onPress={() => setDatePickerVisibility(true)}
                                       style={[dateCamSelectorStyles.datePickerButton, dateCamSelectorStyles.select]}>
                         <Text style={[dateCamSelectorStyles.text, dateCamSelectorStyles.selectInput]}>
                             {moment(date).format('D MMM, YYYY')}
@@ -53,23 +53,26 @@ const DateCamSelector = () => {
                         <Image
                             source={require('../../assets/calendar.png')}
                             resizeMode='contain'
-                            style={{width:24,height:24}}
+                            style={{width: 24, height: 24}}
                         />
                     </TouchableOpacity>
                     <DateTimePickerModal
                         isVisible={isDatePickerVisible}
                         mode="date"
                         onConfirm={handleDataPick}
-                        onCancel={()=>setDatePickerVisibility(false)}
+                        onCancel={() => setDatePickerVisibility(false)}
                     />
                 </View>
                 <View style={[dateCamSelectorStyles.inputGroup, {paddingTop: 20}]}>
-                    <TouchableOpacity onPress={ () => router.push('/album')}
+                    <TouchableOpacity onPress={() => {}}
                                       style={[dateCamSelectorStyles.datePickerButton, dateCamSelectorStyles.exploreButton]}>
-                        <Text style={[dateCamSelectorStyles.text, dateCamSelectorStyles.exploreButtonText]}>
-                            Explore
-                        </Text>
+                        <Link href={{pathname: '/album', params: {selectedCamera, date}}}>
+                            <Text style={[dateCamSelectorStyles.text, dateCamSelectorStyles.exploreButtonText]}>
+                                Explore
+                            </Text>
+                        </Link>
                     </TouchableOpacity>
+
                 </View>
             </View>
             <View></View>

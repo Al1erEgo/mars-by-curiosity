@@ -3,6 +3,10 @@ import {useEffect} from "react";
 import * as SplashScreen from 'expo-splash-screen'
 import {router} from "expo-router";
 
+//TODO do smthng with styles in dateCamSelector
+//TODO made navHeader
+//TODO disable future dates in datePicker
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     'terminal-dosis': require('../assets/terminal-dosis.ttf'),
