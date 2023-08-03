@@ -6,5 +6,6 @@
 ## Стек технологий
 - Expo @ React Native
 - TypeScript
+- SWR
 - Prettier
 - ESLint
