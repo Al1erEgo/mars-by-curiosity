@@ -22,7 +22,9 @@ export const navBarStyles = StyleSheet.create({
         width: '10%',
         justifyContent: "center",
         alignItems: 'flex-end',
-        padding: 10
+        padding: 10,
+        borderColor: 'red',
+        borderWidth: 2
     },
     title: {
         fontFamily: 'terminal-dosis-semibold',

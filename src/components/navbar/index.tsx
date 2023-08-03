@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, TouchableOpacity, Image} from "react-native";
 import {navBarStyles as styles} from './styles'
 import {router} from "expo-router";
+import Share from "../../assets/images/Share";
 
 type NavBarProps = {
     title: string
@@ -45,6 +46,11 @@ const NavBar = ({
                 {secondaryTitleSecond &&
                     <Text style={[styles.secondaryTitle, titleWhite]}>{secondaryTitleSecond}</Text>}
             </View>
+            {saveButton && <TouchableOpacity style={[styles.backContainer]}
+                                             onPress={()=>{}}
+            >
+                <Share />
+            </TouchableOpacity>}
         </View>
     );
 };

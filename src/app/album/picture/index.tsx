@@ -10,7 +10,7 @@ const Picture = () => {
     const {photo, photoId} = useLocalSearchParams()
     return (
         <View style={[styles.container]}>
-            <NavBar backButton invert title={photoId as string} secondaryTitleFirst='Photo ID'/>
+            <NavBar backButton saveButton invert title={photoId as string} secondaryTitleFirst='Photo ID'/>
             <Image style={[styles.image]} source={photo as string} contentFit='contain'/>
         </View>
     );
