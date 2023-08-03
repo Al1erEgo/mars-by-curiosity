@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.al1erego.marsbycuriosity"
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"
@@ -29,6 +30,14 @@
     "plugins": [
       "expo-router"
     ],
-    "scheme": "your-app-scheme"
+    "scheme": "your-app-scheme",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "d1d9f3b9-b5d7-456a-b309-32de069c5b34"
+      }
+    }
   }
 }
