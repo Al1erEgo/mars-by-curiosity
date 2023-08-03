@@ -1,15 +1,15 @@
 import React from 'react';
-import {View, Text, Image, ScrollView, FlatList, TouchableOpacity} from "react-native";
+import {View, Text, ScrollView, TouchableOpacity} from "react-native";
 import {router, useLocalSearchParams} from "expo-router";
 import useSWR from "swr";
 import {fetcher} from "../../utils/fetcher";
 import moment from 'moment';
 import {globalStyles} from "../../styles/globalStyles";
-import {albumStyles} from "../album_json/styles";
+import { Image } from 'expo-image';
+import {albumStyles} from "./styles";
 
 //TODO loader while data fetching
 //TODO типизировать работу с апи
-//TODO
 
 const Album = () => {
     const {selectedCamera, date} = useLocalSearchParams()
@@ -35,7 +35,7 @@ const Album = () => {
                     {data?.photos && data.photos.map(photo => (
                         <TouchableOpacity key={photo.id} onPress={() => router.push({pathname: '/album/picture', params: {photo: photo.img_src}})}>
                         <Image
-                           source={{uri: photo.img_src}} resizeMode='contain'
+                           source={photo.img_src} contentFit='contain'
                             style={[albumStyles.imgCard]}/>
                         </TouchableOpacity>
                     ))}

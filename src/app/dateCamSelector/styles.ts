@@ -3,11 +3,12 @@ import {StyleSheet} from "react-native";
 export const dateCamSelectorStyles = StyleSheet.create({
     bgImage: {
         flex: 1,
-        resizeMode: 'contain',
-        width: '100%'
+        width: '100%',
+        flexDirection: 'column',
+        alignItems: 'center'
     },
     title: {
-        flex: 0.8,
+        flex: 0.3,
         justifyContent: 'center',
         alignItems: 'center',
         borderStyle: 'solid',
@@ -18,7 +19,7 @@ export const dateCamSelectorStyles = StyleSheet.create({
         fontFamily: 'terminal-dosis'
     },
     inputsBlock: {
-        flex: 1,
+        flex: 0.4,
         width: '90%',
         borderStyle: 'solid',
         borderWidth: 2,

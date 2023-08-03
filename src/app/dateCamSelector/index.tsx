@@ -27,54 +27,56 @@ const DateCamSelector = () => {
 
     return (
         <View style={[globalStyles.container]}>
-            <View style={[styles.title]}>
-                <Text>Select Camera and Date</Text>
-            </View>
-            <View style={[styles.inputsBlock]}>
-                <View style={[styles.inputGroup]}>
-                    <Text style={[styles.text]}>Rover Camera</Text>
-                    <SelectList
-                        arrowicon={arrowIcon}
-                        fontFamily='terminal-dosis'
-                        dropdownTextStyles={styles.selectInput}
-                        inputStyles={styles.selectInput}
-                        boxStyles={styles.select}
-                        dropdownStyles={styles.selectItem}
-                        setSelected={setSelectedCamera}
-                        defaultOption={CAMS_NAMES[0]}
-                        data={CAMS_NAMES}/>
+            <ImageBackground source={require('../../assets/background.png')} style={[styles.bgImage]} resizeMode='cover'>
+
+                <View style={[styles.title]}>
+                    <Text>Select Camera and Date</Text>
                 </View>
-                <View style={[styles.inputGroup]}>
-                    <Text style={[styles.text]}>Date</Text>
-                    <TouchableOpacity onPress={() => setDatePickerVisibility(true)}
-                                      style={[styles.datePickerButton, styles.select]}>
-                        <Text style={[styles.text, styles.selectInput]}>
-                            {moment(date).format('D MMM, YYYY')}
-                        </Text>
-                        <Image
-                            source={require('../../assets/calendar.png')}
-                            resizeMode='contain'
-                            style={{width: 24, height: 24}}
+                <View style={[styles.inputsBlock]}>
+                    <View style={[styles.inputGroup]}>
+                        <Text style={[styles.text]}>Rover Camera</Text>
+                        <SelectList
+                            arrowicon={arrowIcon}
+                            fontFamily='terminal-dosis'
+                            dropdownTextStyles={styles.selectInput}
+                            inputStyles={styles.selectInput}
+                            boxStyles={styles.select}
+                            dropdownStyles={styles.selectItem}
+                            setSelected={setSelectedCamera}
+                            defaultOption={CAMS_NAMES[0]}
+                            data={CAMS_NAMES}/>
+                    </View>
+                    <View style={[styles.inputGroup]}>
+                        <Text style={[styles.text]}>Date</Text>
+                        <TouchableOpacity onPress={() => setDatePickerVisibility(true)}
+                                          style={[styles.datePickerButton, styles.select]}>
+                            <Text style={[styles.text, styles.selectInput]}>
+                                {moment(date).format('D MMM, YYYY')}
+                            </Text>
+                            <Image
+                                source={require('../../assets/calendar.png')}
+                                resizeMode='contain'
+                                style={{width: 24, height: 24}}
+                            />
+                        </TouchableOpacity>
+                        <DateTimePickerModal
+                            isVisible={isDatePickerVisible}
+                            mode="date"
+                            onConfirm={handleDataPick}
+                            onCancel={() => setDatePickerVisibility(false)}
                         />
-                    </TouchableOpacity>
-                    <DateTimePickerModal
-                        isVisible={isDatePickerVisible}
-                        mode="date"
-                        onConfirm={handleDataPick}
-                        onCancel={() => setDatePickerVisibility(false)}
-                    />
-                </View>
-                <View style={[styles.inputGroup, {paddingTop: 20}]}>
-                        <TouchableOpacity onPress={() => router.push({pathname: '/album', params: {selectedCamera, date}})}
-                                          style={[styles.datePickerButton, styles.exploreButton]}>
+                    </View>
+                    <View style={[styles.inputGroup, {paddingTop: 20}]}>
+                        <TouchableOpacity
+                            onPress={() => router.push({pathname: '/album', params: {selectedCamera, date}})}
+                            style={[styles.datePickerButton, styles.exploreButton]}>
                             <Text style={[styles.text, styles.exploreButtonText]}>
                                 Explore
                             </Text>
                         </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
-            <View></View>
-            <ImageBackground source={require('../../assets/rover.png')} style={[styles.bgImage]}/>
+            </ImageBackground>
         </View>
     );
 };

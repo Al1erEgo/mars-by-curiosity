@@ -1,11 +1,14 @@
-import {View, Image} from "react-native";
+import {View} from "react-native";
+import { Image } from 'expo-image';
 import {useLocalSearchParams} from "expo-router";
+
+//TODO сделать зум
 
 const Picture = () => {
     const {photo} = useLocalSearchParams()
     return (
-        <View style={{flex:1, width: '100%'}}>
-            <Image style={{width: '100%', height: '100%', resizeMode: 'contain'}} source={{uri: photo as string}}/>
+        <View style={{flex:1, width: '100%', backgroundColor: 'black', alignItems: 'center'}}>
+            <Image style={{width: '90%', height: '100%', resizeMode: 'contain', borderRadius: 10}} source={photo as string} contentFit='contain'/>
         </View>
     );
 };
