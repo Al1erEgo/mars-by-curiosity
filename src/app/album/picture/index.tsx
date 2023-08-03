@@ -1,14 +1,17 @@
 import {View} from "react-native";
-import { Image } from 'expo-image';
+import {Image} from 'expo-image';
 import {useLocalSearchParams} from "expo-router";
+import {pictureStyles as styles} from './styles'
+import NavBar from "../../../components/navbar";
 
 //TODO сделать зум
 
 const Picture = () => {
-    const {photo} = useLocalSearchParams()
+    const {photo, photoId} = useLocalSearchParams()
     return (
-        <View style={{flex:1, width: '100%', backgroundColor: 'black', alignItems: 'center'}}>
-            <Image style={{width: '90%', height: '100%', resizeMode: 'contain', borderRadius: 10}} source={photo as string} contentFit='contain'/>
+        <View style={[styles.container]}>
+            <NavBar backButton invert title={photoId as string} secondaryTitleFirst='Photo ID'/>
+            <Image style={[styles.image]} source={photo as string} contentFit='contain'/>
         </View>
     );
 };

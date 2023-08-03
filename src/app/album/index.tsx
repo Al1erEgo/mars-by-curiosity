@@ -5,8 +5,8 @@ import useSWR from "swr";
 import {fetcher} from "../../utils/fetcher";
 import moment from 'moment';
 import {globalStyles} from "../../styles/globalStyles";
-import { Image } from 'expo-image';
-import {albumStyles} from "./styles";
+import {Image} from 'expo-image';
+import {albumStyles as styles} from "./styles";
 import NavBar from "../../components/navbar";
 import {CAMS_NAMES} from "../../constants/camsNames";
 
@@ -16,7 +16,7 @@ import {CAMS_NAMES} from "../../constants/camsNames";
 const Album = () => {
     const {selectedCamera, date} = useLocalSearchParams()
 
-    const cameraName = CAMS_NAMES[CAMS_NAMES.findIndex( camera => camera.key === selectedCamera)].value
+    const cameraName = CAMS_NAMES[CAMS_NAMES.findIndex(camera => camera.key === selectedCamera)].value
 
     const {
         data,
@@ -35,17 +35,28 @@ const Album = () => {
     return (
         <View style={[globalStyles.container]}>
             <NavBar title={cameraName} secondaryTitleSecond={moment(date).format('D MMM, YYYY')} backButton/>
-            <ScrollView style={{flex:1, width: '100%'}}>
-                <View style={{width: '100%', flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'center', gap: 10}}>
-                    {data?.photos && data.photos.map(photo => (
-                        <TouchableOpacity key={photo.id} onPress={() => router.push({pathname: '/album/picture', params: {photo: photo.img_src}})}>
-                        <Image
-                           source={photo.img_src} contentFit='contain'
-                            style={[albumStyles.imgCard]}/>
-                        </TouchableOpacity>
-                    ))}
-                </View>
-            </ScrollView>
+            <View style={{flex: 0.8, width: '100%'}}>
+                <ScrollView>
+                    <View style={{
+                        width: '100%',
+                        flexWrap: 'wrap',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        gap: 10
+                    }}>
+                        {data?.photos && data.photos.map(photo => (
+                            <TouchableOpacity key={photo.id} onPress={() => router.push({
+                                pathname: '/album/picture',
+                                params: {photo: photo.img_src, photoId: photo.id}
+                            })}>
+                                <Image
+                                    source={photo.img_src} contentFit='contain'
+                                    style={[styles.imgCard]}/>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                </ScrollView>
+            </View>
         </View>
 
     );

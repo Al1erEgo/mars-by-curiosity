@@ -7,13 +7,15 @@ export const navBarStyles = StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent: 'center',
         marginBottom: 30,
-        width: '100%'
+        width: '100%',
     },
     titleContainer:{
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
         height: '40%',
-        width: '80%'
+        width: '80%',
+        borderColor: 'red',
+        borderWidth: 2
     },
     backContainer: {
         height: '40%',
@@ -24,7 +26,9 @@ export const navBarStyles = StyleSheet.create({
     },
     title: {
         fontFamily: 'terminal-dosis-semibold',
-        fontSize: 25
+        fontSize: 25,
+        borderColor: 'red',
+        borderWidth: 2
     },
     secondaryTitle: {
         fontFamily: 'terminal-dosis',
