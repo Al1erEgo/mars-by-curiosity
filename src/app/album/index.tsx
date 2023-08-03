@@ -7,12 +7,16 @@ import moment from 'moment';
 import {globalStyles} from "../../styles/globalStyles";
 import { Image } from 'expo-image';
 import {albumStyles} from "./styles";
+import NavBar from "../../components/navbar";
+import {CAMS_NAMES} from "../../constants/camsNames";
 
 //TODO loader while data fetching
 //TODO типизировать работу с апи
 
 const Album = () => {
     const {selectedCamera, date} = useLocalSearchParams()
+
+    const cameraName = CAMS_NAMES[CAMS_NAMES.findIndex( camera => camera.key === selectedCamera)].value
 
     const {
         data,
@@ -30,6 +34,7 @@ const Album = () => {
 
     return (
         <View style={[globalStyles.container]}>
+            <NavBar title={cameraName} secondaryTitleSecond={moment(date).format('D MMM, YYYY')} backButton/>
             <ScrollView style={{flex:1, width: '100%'}}>
                 <View style={{width: '100%', flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'center', gap: 10}}>
                     {data?.photos && data.photos.map(photo => (

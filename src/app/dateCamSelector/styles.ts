@@ -11,9 +11,10 @@ export const dateCamSelectorStyles = StyleSheet.create({
         fontFamily: 'terminal-dosis'
     },
     inputsBlock: {
-        flex: 0.4,
+        flex: 0.48,
         width: '90%',
         gap: 20,
+        justifyContent: "flex-end"
     },
     inputGroup: {
         gap: 5,
