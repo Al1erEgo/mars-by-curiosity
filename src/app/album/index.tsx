@@ -45,7 +45,7 @@ const Album = () => {
                                         params: {photo: photo.img_src, photoId: photo.id}
                                     })}>
                                         <Image
-                                            source={photo.img_src} contentFit='contain'
+                                            source={photo.img_src} contentFit='cover'
                                             style={[styles.imgCard]}/>
                                     </TouchableOpacity>
                                 ))}

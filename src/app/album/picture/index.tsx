@@ -11,7 +11,7 @@ const Picture = () => {
     return (
         <View style={[styles.container]}>
             <NavBar backButton saveButton invert title={photoId as string} secondaryTitleFirst='Photo ID' shareImgUrl={photo as string}/>
-            <Image style={[styles.image]} source={photo as string} contentFit='contain'/>
+            <Image style={[styles.image]} source={photo as string} contentFit='cover'/>
         </View>
     );
 };
