@@ -33,9 +33,9 @@ const Album = () => {
             <ScrollView style={{flex:1, width: '100%'}}>
                 <View style={{width: '100%', flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'center', gap: 10}}>
                     {data?.photos && data.photos.map(photo => (
-                        <TouchableOpacity key={photo.id} onPress={() => router.push({pathname: '/album/23'})}>
+                        <TouchableOpacity key={photo.id} onPress={() => router.push({pathname: '/album/picture', params: {photo: photo.img_src}})}>
                         <Image
-                            key={photo.id} source={{uri: photo.img_src}} resizeMode='contain'
+                           source={{uri: photo.img_src}} resizeMode='contain'
                             style={[albumStyles.imgCard]}/>
                         </TouchableOpacity>
                     ))}
