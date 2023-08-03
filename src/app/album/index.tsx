@@ -11,9 +11,6 @@ import NavBar from "../../components/navbar";
 import {CAMS_NAMES} from "../../constants/camsNames";
 import {Photo} from "../../types/api.dtos";
 
-//TODO loader while data fetching
-//TODO типизировать работу с апи
-
 const Album = () => {
     const {selectedCamera, date} = useLocalSearchParams()
 
@@ -24,10 +21,6 @@ const Album = () => {
         error,
         isLoading
     } = useSWR<{photos: Photo[]}>(`${process.env.EXPO_PUBLIC_API_URL}photos?earth_date=${moment(date).format('YYYY-MM-DD')}&api_key=${process.env.EXPO_PUBLIC_API_KEY}${selectedCamera ? `&camera=${(selectedCamera as string).toLowerCase()}` : ''}`, fetcher)
-
-    if (error) {
-        console.warn(error)
-    }
 
     return (
         <View style={[globalStyles.container]}>
@@ -45,7 +38,9 @@ const Album = () => {
                                         params: {photo: photo.img_src, photoId: photo.id}
                                     })}>
                                         <Image
-                                            source={photo.img_src} contentFit='cover'
+                                            alt='Image'
+                                            source={photo.img_src}
+                                            contentFit='cover'
                                             style={[styles.imgCard]}/>
                                     </TouchableOpacity>
                                 ))}

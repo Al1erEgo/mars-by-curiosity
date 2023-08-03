@@ -14,8 +14,6 @@ export const navBarStyles = StyleSheet.create({
         justifyContent: 'center',
         height: '40%',
         width: '80%',
-        borderColor: 'red',
-        borderWidth: 2
     },
     backContainer: {
         height: '40%',
@@ -23,14 +21,10 @@ export const navBarStyles = StyleSheet.create({
         justifyContent: "center",
         alignItems: 'flex-end',
         padding: 10,
-        borderColor: 'red',
-        borderWidth: 2
     },
     title: {
         fontFamily: 'terminal-dosis-semibold',
         fontSize: 25,
-        borderColor: 'red',
-        borderWidth: 2
     },
     secondaryTitle: {
         fontFamily: 'terminal-dosis',
