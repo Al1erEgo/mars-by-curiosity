@@ -3,6 +3,7 @@ import {View, Text, TouchableOpacity, Image} from "react-native";
 import {navBarStyles as styles} from './styles'
 import {router} from "expo-router";
 import Share from "../../assets/images/Share";
+import Back from "../../assets/images/Back";
 
 type NavBarProps = {
     title: string
@@ -32,11 +33,7 @@ const NavBar = ({
             {backButton && <TouchableOpacity style={[styles.backContainer]}
                                              onPress={router.back}
             >
-                <Image
-                    source={require('../../assets/images/back.png')}
-                    resizeMode='contain'
-                    style={{width: 5, height: 10}}
-                />
+                <Back stroke={invert ? 'white' : 'black'}/>
             </TouchableOpacity>}
             <View style={[styles.titleContainer]}>
                 {secondaryTitleFirst && <Text style={[styles.secondaryTitle, titleWhite]}>{secondaryTitleFirst}</Text>}
@@ -49,7 +46,7 @@ const NavBar = ({
             {saveButton && <TouchableOpacity style={[styles.backContainer]}
                                              onPress={()=>{}}
             >
-                <Share />
+                <Share stroke={invert ? 'white' : 'black'} />
             </TouchableOpacity>}
         </View>
     );
