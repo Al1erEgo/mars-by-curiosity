@@ -7,9 +7,10 @@ import DateTimePickerModal from "react-native-modal-datetime-picker"
 import moment from 'moment';
 import {router} from "expo-router";
 import {globalStyles} from "../../styles/globalStyles";
+import NavBar from "../../components/navbar";
 
 const arrowIcon = <Image
-    source={require('../../assets/dropdown.png')}
+    source={require('../../assets/images/dropdown.png')}
     resizeMode='contain'
     style={{width: 10, height: 5}}
 />
@@ -27,11 +28,8 @@ const DateCamSelector = () => {
 
     return (
         <View style={[globalStyles.container]}>
-            <ImageBackground source={require('../../assets/background.png')} style={[styles.bgImage]} resizeMode='cover'>
-
-                <View style={[styles.title]}>
-                    <Text>Select Camera and Date</Text>
-                </View>
+            <ImageBackground source={require('../../assets/images/background.png')} style={[styles.bgImage]} resizeMode='cover'>
+                <NavBar title='Select Camera and Date'/>
                 <View style={[styles.inputsBlock]}>
                     <View style={[styles.inputGroup]}>
                         <Text style={[styles.text]}>Rover Camera</Text>
@@ -54,7 +52,7 @@ const DateCamSelector = () => {
                                 {moment(date).format('D MMM, YYYY')}
                             </Text>
                             <Image
-                                source={require('../../assets/calendar.png')}
+                                source={require('../../assets/images/calendar.png')}
                                 resizeMode='contain'
                                 style={{width: 24, height: 24}}
                             />

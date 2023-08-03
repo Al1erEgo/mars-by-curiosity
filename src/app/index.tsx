@@ -10,8 +10,9 @@ import {router} from "expo-router";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    'terminal-dosis': require('../assets/terminal-dosis.ttf'),
-    'terminal-dosis-medium': require('../assets/terminal-dosis-medium.ttf')
+    'terminal-dosis': require('../assets/fonts/terminal-dosis.ttf'),
+    'terminal-dosis-medium': require('../assets/fonts/terminal-dosis-medium.ttf'),
+    'terminal-dosis-semibold': require('../assets/fonts/terminal-dosis-semibold.ttf')
   })
 
   useEffect(() => {

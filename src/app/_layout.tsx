@@ -1,7 +1,10 @@
-import { Slot } from 'expo-router';
+import {Slot} from 'expo-router';
 
 const AppLayout = () => {
-    return <Slot />;
+    return (
+    <>
+        <Slot/>
+    </>)
 }
 
 export default AppLayout

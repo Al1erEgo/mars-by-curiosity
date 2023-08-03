@@ -7,23 +7,12 @@ export const dateCamSelectorStyles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center'
     },
-    title: {
-        flex: 0.3,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderStyle: 'solid',
-        borderWidth: 2,
-        borderColor: 'red',
-    },
     text: {
         fontFamily: 'terminal-dosis'
     },
     inputsBlock: {
         flex: 0.4,
         width: '90%',
-        borderStyle: 'solid',
-        borderWidth: 2,
-        borderColor: 'red',
         gap: 20,
     },
     inputGroup: {
