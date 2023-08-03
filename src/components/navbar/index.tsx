@@ -36,14 +36,14 @@ const NavBar = ({
     const share = () => {
         Sharing.isAvailableAsync().then( res => {
             if (res) {
-                const fileUri = FileSystem.cacheDirectory + 'tmp.jpg';
+                const fileUri = FileSystem.cacheDirectory + shareImgUrl!.slice(shareImgUrl!.lastIndexOf('/'));
                 const options = {
                     mimeType: 'image/jpeg',
                     dialogTitle: 'Share the image',
                     UTI: 'image/jpeg',
                 };
 
-                FileSystem.downloadAsync(shareImgUrl, fileUri)
+                FileSystem.downloadAsync(shareImgUrl!, fileUri)
 
                 Sharing.shareAsync(fileUri, options)
             }
