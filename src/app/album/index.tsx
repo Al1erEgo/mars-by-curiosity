@@ -18,7 +18,7 @@ const Album = () => {
     CAMS_NAMES[CAMS_NAMES.findIndex((camera) => camera.key === selectedCamera)].value;
 
   const { data, error, isLoading } = useSWR<{ photos: Photo[] }>(
-    `${process.env.EXPO_PUBLIC_API_URL}photos?earth_date=${moment(date).format(
+    `${process.env.EXPO_PUBLIC_API_URL}photos?earth_date=${moment(new Date(date as string)).format(
       'YYYY-MM-DD'
     )}&api_key=${process.env.EXPO_PUBLIC_API_KEY}${
       selectedCamera ? `&camera=${(selectedCamera as string).toLowerCase()}` : ''
@@ -30,7 +30,7 @@ const Album = () => {
     <View style={[globalStyles.container]}>
       <NavBar
         title={cameraName}
-        secondaryTitleSecond={moment(date).format('D MMM, YYYY')}
+        secondaryTitleSecond={moment(new Date(date as string)).format('D MMM, YYYY')}
         backButton
       />
       {error ? (
